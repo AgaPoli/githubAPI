@@ -1,0 +1,158 @@
+//----------font color-------------------------------------------------------
+
+$primary: #212121;
+$primary-dark: #141414;
+$primary-light: #2e2e2e;
+$accent: #f8be20;
+$primary-font: #cdcecd;
+$primary-dark-font: #bebebe;
+$primary-darkest-font: #4c5a67;
+
+// Tekst---------------------------------------------------------------------------
+$font-size-base: 1rem;
+$font-size-1: $font-size-base * 3; // ~48px
+$font-size-2: $font-size-base * 1.5; // ~24px
+$font-size-3: $font-size-base * 1.125; // ~18px
+$font-size-4: $font-size-base * 1; // ~16px
+$font-size-5: $font-size-base * 0.875; // ~14px
+$font-size-6: $font-size-base * 0.75; // ~12px
+$font-size-7: $font-size-base * 0.625; // ~10px
+
+$line-height-base: 1.5em;
+$line-height-sm: 1.2em;
+$line-height-lg: 1.8em;
+
+// Siatka
+$grid-base: 10px;
+$gutter: $grid-base * 1.5;
+
+// Zaokroglenia
+$border-radius: $grid-base * 0.5;
+
+// Breakpoint
+$bp-medium: '800px';
+$bp-large: '1200px';
+
+//-----------mixins------------------------------------
+// Od srednich w gore
+@mixin medium-up {
+    @media (min-width: #{$bp-medium}) {
+        //800px#{}bo zapisane jako string
+        // tu wstawiam dowolne deklaracje
+        @content;
+    }
+}
+
+// Od duzych w gore
+@mixin large-up {
+    @media (min-width: #{$bp-large}) {
+        @content;
+    }
+}
+
+h1 {
+    color: red;
+    @include medium-up {
+        color: blue;
+    }
+}
+
+//box-sizing----------------------------------
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+//body----------------------------------------------------------------------
+
+body {
+    background-color: #2e2e2e;
+    color: $primary-font;
+    font-size: $font-size-4; //16px
+    margin: 0;
+    padding: 0;
+}
+
+//typography------------------------------------------------------------------
+
+p {
+    font-size: $font-size-4;
+    font-weight: 400;
+    line-height: $line-height-base;
+    margin: 0;
+    margin-bottom: $grid-base; //10px
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: $font-size-4;
+    line-height: $line-height-base;
+    margin: 0;
+}
+
+a {
+    color: $primary-font;
+    text-decoration: none;
+    &:hover {
+        color: $primary-font;
+        text-decoration: underline; //ma byc podkreslnik zolty
+    }
+}
+
+//imagines---------------------
+img {
+    max-width: 100%;
+}
+
+//-----OBIEKTY----
+
+//KONTENER
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter; //15px
+    padding-right: $gutter; //15px
+    width: 100%;
+
+    @include medium-up {
+        max-width: 600px;
+    }
+
+    @include large-up {
+        max-width: 1000px;
+    }
+}
+
+.text_highlighting {
+    font-size: $font-size-4;
+    color: $primary-darkest-font;
+    font-weight: bold;
+    line-height: $line-height-lg;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.budget {
+    width: 50px;
+    height: 50px;
+    border-radius: 11px;
+    padding: 2px;
+    justify-self: center;
+    margin-left: 3px;
+}
+
+.mat-form-field-underline {
+    display: none !important;
+}
+
+.mat-drawer-container {
+    background-color: $primary-light;
+    color: rgba(0, 0, 0, 0.87);
+}
